@@ -2,6 +2,8 @@ package com.example.assignment3.models;
 
 import jakarta.persistence.*;
 
+import java.util.Set;
+
 @Entity
 public class Franchise {
     @Id
@@ -11,4 +13,7 @@ public class Franchise {
     @Column(name = "franchise_name", length = 50, nullable = false)
     private String name;
     private String description;
+
+    @OneToMany
+    private Set<Movie> movie;
 }

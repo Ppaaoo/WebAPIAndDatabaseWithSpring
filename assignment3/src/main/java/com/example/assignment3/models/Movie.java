@@ -2,6 +2,8 @@ package com.example.assignment3.models;
 
 import jakarta.persistence.*;
 
+import java.util.Set;
+
 @Entity
 public class Movie {
     @Id
@@ -15,4 +17,12 @@ public class Movie {
     private String director;
     private String posterURL;
     private String trailerURL;
+
+    @OneToOne
+    @JoinColumn(name = "franchise_id")
+    private Franchise franchise;
+
+    @OneToMany
+    private Set<Character> character;
+
 }

@@ -2,6 +2,8 @@ package com.example.assignment3.models;
 
 import jakarta.persistence.*;
 
+import java.util.Set;
+
 @Entity
 public class Character {
     @Id
@@ -13,4 +15,7 @@ public class Character {
     private String alias;
     private String gender;
     private String pictureURL;
+
+    @OneToMany
+    private Set<Movie> movie;
 }
