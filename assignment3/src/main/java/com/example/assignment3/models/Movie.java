@@ -15,14 +15,17 @@ public class Movie {
     private String genre;
     private int releaseYear;
     private String director;
+    @Column(name = "poster_url")
     private String posterURL;
+    @Column(name = "trailer_url")
     private String trailerURL;
 
-    @OneToOne
+    @ManyToMany(mappedBy = "movies")
+    private Set<Character> charactersInMovie;
+
+    @ManyToOne
     @JoinColumn(name = "franchise_id")
     private Franchise franchise;
 
-    @OneToMany
-    private Set<Character> character;
 
 }

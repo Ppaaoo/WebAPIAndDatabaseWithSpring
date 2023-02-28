@@ -14,8 +14,9 @@ public class Character {
     private String name;
     private String alias;
     private String gender;
+    @Column(name = "picture_url")
     private String pictureURL;
 
-    @OneToMany
-    private Set<Movie> movie;
+    @ManyToMany
+    private Set<Movie> movies;
 }
