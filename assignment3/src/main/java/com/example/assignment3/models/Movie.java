@@ -13,6 +13,7 @@ public class Movie {
     @Column(name = "movie_title", length = 50, nullable = false)
     private String title;
     private String genre;
+    @Column(name = "release_year")
     private int releaseYear;
     private String director;
     @Column(name = "poster_url")
