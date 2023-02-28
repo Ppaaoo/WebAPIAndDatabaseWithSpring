@@ -20,7 +20,12 @@ public class Movie {
     @Column(name = "trailer_url")
     private String trailerURL;
 
-    @ManyToMany(mappedBy = "movies")
+    @ManyToMany
+    @JoinTable(
+            name = "movie_character",
+            joinColumns = {@JoinColumn(name = "movie_id")},
+            inverseJoinColumns = {@JoinColumn(name = "character_id")}
+    )
     private Set<Character> charactersInMovie;
 
     @ManyToOne
