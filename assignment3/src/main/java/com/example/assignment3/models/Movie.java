@@ -2,13 +2,13 @@ package com.example.assignment3.models;
 
 import jakarta.persistence.*;
 
+import java.util.Collection;
 import java.util.Set;
 
 @Entity
 public class Movie {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "movie_id")
     private int id;
     @Column(name = "movie_title", length = 50, nullable = false)
     private String title;
@@ -21,13 +21,12 @@ public class Movie {
     @Column(name = "trailer_url")
     private String trailerURL;
 
-    @ManyToMany
+    @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(
-            name = "movie_character",
-            joinColumns = {@JoinColumn(name = "movie_id")},
-            inverseJoinColumns = {@JoinColumn(name = "character_id")}
-    )
-    private Set<Character> charactersInMovie;
+            name = "movies_characters",
+            joinColumns = @JoinColumn(name = "movie_id"),
+            inverseJoinColumns = @JoinColumn(name = "character_id"))
+    private Collection<Character> characters;
 
     @ManyToOne
     @JoinColumn(name = "franchise_id")
