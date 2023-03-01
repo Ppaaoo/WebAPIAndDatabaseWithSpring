@@ -1,5 +1,7 @@
 package com.example.assignment3.services;
 
+import com.example.assignment3.models.Movie;
+
 import java.util.Collection;
 
 public class MovieServiceImpl implements MovieService {
