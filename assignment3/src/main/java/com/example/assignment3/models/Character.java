@@ -9,6 +9,7 @@ import java.util.Set;
 public class Character {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "character_id")
     private int id;
     @Column(name = "character_name", length = 50, nullable = false)
     private String name;
@@ -16,7 +17,12 @@ public class Character {
     private String gender;
     @Column(name = "picture_url")
     private String pictureURL;
+    private int test;
 
-    @ManyToMany(mappedBy = "characters")
-    private Set<Movie> movie = new HashSet<>();
+    @ManyToMany
+    @JoinTable(
+            name = "movies_characters",
+            joinColumns = @JoinColumn(name = "character_id"),
+            inverseJoinColumns = @JoinColumn(name = "movie_id"))
+    private Set<Movie> movies;
 }
