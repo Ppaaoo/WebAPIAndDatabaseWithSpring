@@ -1,5 +1,7 @@
 package com.example.assignment3.services;
 
+import com.example.assignment3.models.Franchise;
+
 import java.util.Collection;
 
 public class FranchiseServiceImpl implements FranchiseService {
