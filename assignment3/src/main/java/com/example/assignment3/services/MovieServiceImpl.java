@@ -1,32 +1,49 @@
 package com.example.assignment3.services;
 
+import com.example.assignment3.exceptions.NotFound;
 import com.example.assignment3.models.Movie;
+import com.example.assignment3.repositories.MovieRepository;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
 
-import java.util.Collection;
+import java.util.List;
+import java.util.Optional;
 
+@Service
+@RequiredArgsConstructor
 public class MovieServiceImpl implements MovieService {
+    private final MovieRepository movieRepository;
     @Override
-    public Movie findById(Integer integer) {
-        return null;
+    public List<Movie> getAllMovies() {
+        return movieRepository.findAll();
+    }
+
+//    @Override
+//    public Optional<Movie> getMovieById(int id) {
+//        try {
+//            return movieRepository.findById(id);
+//        } catch (Exception e) {
+//            throw new RuntimeException(e);
+//        }
+//    }
+
+    @Override
+    public Movie getById(int id) {
+        return getMovieById(id);
     }
 
     @Override
-    public Collection<Movie> findAll() {
-        return null;
+    public Movie addMovie(Movie movie) {
+        return movieRepository.save(movie);
     }
 
     @Override
-    public Movie add(Movie entity) {
-        return null;
+    public void deleteMovieById(int id) {
+        Movie movie = getMovieById(id);
+        movieRepository.delete(movie);
     }
 
-    @Override
-    public Movie update(Movie entity) {
-        return null;
-    }
-
-    @Override
-    public void deleteById(Integer integer) {
-
+    private Movie getMovieById(int id) {
+        return movieRepository.findById(id).orElseThrow(() -> new NotFound("Movie not found with this id: " + id));
     }
 }
