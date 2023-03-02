@@ -1,5 +1,9 @@
 package com.example.assignment3.runners;
 
+import com.example.assignment3.models.Franchise;
+import com.example.assignment3.models.Movie;
+import com.example.assignment3.repositories.CharacterRepository;
+import com.example.assignment3.repositories.FranchiseRepository;
 import com.example.assignment3.repositories.MovieRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.boot.ApplicationArguments;
@@ -14,9 +18,13 @@ import org.springframework.stereotype.Component;
 @Component
 public class AppRunner implements ApplicationRunner {
     private final MovieRepository movieRepository;
+    private final CharacterRepository characterRepository;
+    private final FranchiseRepository franchiseRepository;
 
-    public AppRunner(MovieRepository movieRepository) {
+    public AppRunner(MovieRepository movieRepository, CharacterRepository characterRepository, FranchiseRepository franchiseRepository) {
         this.movieRepository = movieRepository;
+        this.characterRepository = characterRepository;
+        this.franchiseRepository = franchiseRepository;
     }
     @Override
     @Transactional
@@ -24,5 +32,15 @@ public class AppRunner implements ApplicationRunner {
         //movieService.deleteById(1);
         System.out.println("Hello from runner");
         System.out.println(movieRepository.findById(1).get().getCharacters());
+    }
+
+    public void addCharacter(Character character) {
+
+    }
+    public void addMovie(Movie movie) {
+
+    }
+    public void addFranchise(Franchise franchise) {
+
     }
 }
