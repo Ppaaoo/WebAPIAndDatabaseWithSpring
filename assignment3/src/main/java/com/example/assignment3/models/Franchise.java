@@ -1,5 +1,6 @@
 package com.example.assignment3.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.util.Set;
@@ -13,6 +14,7 @@ public class Franchise {
     private String name;
     private String description;
     @OneToMany(mappedBy = "franchise")
+    @JsonIgnore
     private Set<Movie> moviesInFranchise;
 
     @Override

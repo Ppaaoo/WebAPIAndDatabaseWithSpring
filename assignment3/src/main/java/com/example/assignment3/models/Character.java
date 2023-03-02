@@ -1,5 +1,6 @@
 package com.example.assignment3.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.util.HashSet;
@@ -20,6 +21,7 @@ public class Character {
     private int test;
 
     @ManyToMany
+    @JsonIgnore
     @JoinTable(
             name = "movies_characters",
             joinColumns = @JoinColumn(name = "character_id"),
