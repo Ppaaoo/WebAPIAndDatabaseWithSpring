@@ -1,8 +1,6 @@
 package com.example.assignment3.models;
 
 import jakarta.persistence.*;
-
-import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -21,8 +19,8 @@ public class Character {
     @ManyToMany
     @JoinTable(
             name = "movies_characters",
-            joinColumns = @JoinColumn(name = "character_id"),
-            inverseJoinColumns = @JoinColumn(name = "movie_id"))
+            joinColumns = @JoinColumn(name = "characters_id"),
+            inverseJoinColumns = @JoinColumn(name = "movies_id"))
     private Set<Movie> movies;
 
     @Override

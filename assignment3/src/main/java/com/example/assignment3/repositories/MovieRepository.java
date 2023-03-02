@@ -12,6 +12,9 @@ public interface MovieRepository extends JpaRepository<Movie, Integer> {
     @Query(value = "SELECT * FROM Movie m WHERE m.title LIKE %?%", nativeQuery = true)
     Set<Movie> findAllByTitle(String title);
 
-    @Query(value = "SELECT * FROM Movie m WHERE m.id LIKE %?%", nativeQuery = true)
+    @Query(value = "SELECT * FROM Movie m WHERE m.movie_id = ?", nativeQuery = true)
     Set<Movie> findAllById(int id);
+
+    @Query(value = "SELECT * FROM Movie m WHERE m.franchise_id = ?", nativeQuery = true)
+    Set<Movie> findAllByFranchise(int id);
 }
