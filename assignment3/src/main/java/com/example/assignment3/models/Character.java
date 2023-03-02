@@ -17,7 +17,6 @@ public class Character {
     private String gender;
     @Column(name = "picture_url")
     private String pictureURL;
-    private int test;
 
     @ManyToMany
     @JoinTable(
@@ -72,14 +71,6 @@ public class Character {
 
     public void setPictureURL(String pictureURL) {
         this.pictureURL = pictureURL;
-    }
-
-    public int getTest() {
-        return test;
-    }
-
-    public void setTest(int test) {
-        this.test = test;
     }
 
     public Set<Movie> getMovies() {

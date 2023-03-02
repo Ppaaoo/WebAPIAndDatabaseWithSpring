@@ -1,5 +1,5 @@
-INSERT INTO character(character_name, alias, gender, picture_url, test) VALUES('Loki Odinson', 'Loki', 'God', 'placeholder', 1);
-INSERT INTO character(character_name, alias, gender, picture_url, test) VALUES('Thor Odinson', 'Thor', 'God', 'placeholder', 2);
+INSERT INTO character(character_name, alias, gender, picture_url) VALUES('Loki Odinson', 'Loki', 'God', 'placeholder');
+INSERT INTO character(character_name, alias, gender, picture_url) VALUES('Thor Odinson', 'Thor', 'God', 'placeholder');
 
 INSERT INTO franchise(franchise_name, description) VALUES('Marvel Cinematic Universe', 'An American media franchise and shared universe centered on a series of superhero films produced by Marvel studios');
 
