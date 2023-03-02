@@ -4,8 +4,6 @@ import com.example.assignment3.models.Character;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
-
-import java.lang.foreign.VaList;
 import java.util.Set;
 
 @Repository
@@ -19,6 +17,6 @@ public interface CharacterRepository extends JpaRepository<Character, Integer> {
     @Query(value = "SELECT * FROM Character A INNER JOIN movies_characters B ON A.character_id = B.characters_id WHERE B.movies_id = ?", nativeQuery = true)
     Set<Character> findAllCharactersByMovieId(int id);
 
-    @Query(value = "SELECT * FROM Character A INNER JOIN movies_characters B ON A.character_id = B.characters_id WHERE B.franchise_id = ?", nativeQuery = true)
+    @Query(value = "SELECT * FROM Character A INNER JOIN movies_characters B ON A.character_id = B.characters_id INNER JOIN movie C ON B.movies_id = C.movie_id WHERE C.franchise_id = ?", nativeQuery = true)
     Set<Character> findAllCharactersByFranchiseId(int id);
 }
