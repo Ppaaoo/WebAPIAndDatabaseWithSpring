@@ -30,7 +30,7 @@ public class FranchiseController {
         return ResponseEntity.ok(franchises);
     }
 
-    @GetMapping("{id}") // GET: localhost:8080/api/v1/franchise/1
+    @GetMapping("/id/{id}") // GET: localhost:8080/api/v1/franchise/1
     public ResponseEntity getById(@PathVariable int id) {
         FranchiseDto franchise = franchiseMapper.franchiseToFranchiseDto(
                 franchiseService.findById(id)

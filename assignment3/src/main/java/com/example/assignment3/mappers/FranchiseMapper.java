@@ -32,4 +32,11 @@ public abstract class FranchiseMapper {
         return source.stream()
                 .map(character -> character.getId()).collect(Collectors.toSet());
     }
+
+    @Named("idsToMovies")
+    Set<Movie> mapIdsToMovies(Set<Integer> source) {
+        return source.stream()
+                .map(franId -> movieService.findById(franId))
+                .collect(Collectors.toSet());
+    }
 }
