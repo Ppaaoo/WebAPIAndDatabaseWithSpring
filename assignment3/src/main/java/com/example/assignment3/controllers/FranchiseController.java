@@ -33,12 +33,12 @@ public class FranchiseController {
     @GetMapping("/id/{id}") // GET: localhost:8080/api/v1/franchise/1
     public ResponseEntity getById(@PathVariable int id) {
         FranchiseDto franchise = franchiseMapper.franchiseToFranchiseDto(
-                franchiseService.findById(id)
+            franchiseService.findById(id)
         );
         return ResponseEntity.ok(franchise);
     }
 
-    @GetMapping("{name}") //GET: localhost:8080/api/v1/franchise?name=Marvel
+    @GetMapping("search") //GET: localhost:8080/api/v1/franchise?name=Marvel
     public ResponseEntity<Collection<Franchise>> findByName(@RequestParam String name) {
         return ResponseEntity.ok(franchiseService.findAllByName(name));
     }
@@ -48,5 +48,22 @@ public class FranchiseController {
         Franchise fran = franchiseService.add(franchise);
         URI location = URI.create("franchise/" + fran.getId());
         return ResponseEntity.created(location).build();
+    }
+
+    @PutMapping("{id}") // PUT: localhost:8080/api/v1/franchise/1
+    public ResponseEntity update(@RequestBody FranchiseDto franchiseDto, @PathVariable int id) {
+        //Validates body
+        if(id != franchiseDto.getId())
+            return ResponseEntity.badRequest().build();
+        franchiseService.update(
+                franchiseMapper.franchiseDtoToFranchise(franchiseDto)
+        );
+        return ResponseEntity.noContent().build();
+    }
+
+    @DeleteMapping("{id}") // DELETE: localhost:8080/api/v1/franchise/delete/1
+    public ResponseEntity delete(@PathVariable int id) {
+        franchiseService.deleteById(id);
+        return ResponseEntity.noContent().build();
     }
 }
