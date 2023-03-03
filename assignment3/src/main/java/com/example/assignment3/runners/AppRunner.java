@@ -38,7 +38,7 @@ public class AppRunner implements ApplicationRunner {
 
         linkMovieToFranchise(5, 2);
         //System.out.println(movieRepository.findAllByFranchise(2));
-        System.out.println(characterRepository.findAllCharactersByFranchiseId(2));
+        //System.out.println(characterRepository.findAllCharactersByFranchiseId(2));
     }
 
     //---CHARACTER---

@@ -8,14 +8,23 @@ import java.util.Collection;
 
 @Service
 public class FranchiseServiceImpl implements FranchiseService {
+    private final FranchiseRepository franchiseRepository;
+
+    public FranchiseServiceImpl(FranchiseRepository franchiseRepository) {
+        this.franchiseRepository = franchiseRepository;
+    }
     @Override
     public Franchise findById(Integer integer) {
-        return null;
+        return franchiseRepository.findById(integer).get();
     }
 
     @Override
     public Collection<Franchise> findAll() {
         return franchiseRepository.findAll();
+    }
+
+    public Collection<Franchise> findAllByName(String name) {
+        return franchiseRepository.findAllByName(name);
     }
 
     @Override
