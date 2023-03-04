@@ -1,17 +1,24 @@
 package com.example.assignment3.services;
 
+import com.example.assignment3.models.Character;
 import com.example.assignment3.models.Movie;
+import com.example.assignment3.repositories.CharacterRepository;
 import com.example.assignment3.repositories.MovieRepository;
+import jakarta.persistence.EntityNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.Collection;
+import java.util.Collections;
+import java.util.Set;
 
 @Service
 public class MovieServiceImpl implements MovieService {
     private final MovieRepository movieRepository;
+    private final CharacterRepository characterRepository;
 
-    public MovieServiceImpl(MovieRepository movieRepository) {
+    public MovieServiceImpl(MovieRepository movieRepository, CharacterRepository characterRepository) {
         this.movieRepository = movieRepository;
+        this.characterRepository = characterRepository;
     }
     @Override
     public Movie findById(Integer id) {
@@ -37,5 +44,10 @@ public class MovieServiceImpl implements MovieService {
     @Override
     public void deleteById(Integer id) {
         movieRepository.deleteById(id);
+    }
+
+    @Override
+    public Collection<Movie> findAllByName(String name) {
+        return movieRepository.findAllByName(name);
     }
 }

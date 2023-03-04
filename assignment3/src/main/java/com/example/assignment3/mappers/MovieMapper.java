@@ -20,6 +20,17 @@ public abstract class MovieMapper {
 
     public abstract Collection<MovieDto> movieToMovieDto(Collection<Movie> movies);
 
+    @Mapping(target = "id", source = "id")
+    @Mapping(target = "title", source = "title")
+    @Mapping(target = "genre", source = "genre")
+    @Mapping(target = "releaseYear", source = "releaseYear")
+    @Mapping(target = "director", source = "director")
+    @Mapping(target = "posterURL", source = "posterURL")
+    @Mapping(target = "trailerURL", source = "trailerURL")
+    @Mapping(target = "characters", source = "characters", qualifiedByName = "idsToCharacters")
+    @Mapping(target = "franchise", source = "franchise", qualifiedByName = "idToFranchise")
+    public abstract Movie movieDtoToMovie(MovieDto dto);
+
     //Custom mappings
     @Named("charactersToId")
     Set<Integer> mapCharactersToIds(Set<Character> source) {

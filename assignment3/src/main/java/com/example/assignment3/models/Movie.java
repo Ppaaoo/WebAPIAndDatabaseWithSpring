@@ -94,9 +94,7 @@ public class Movie {
         return characters;
     }
 
-    public void setCharacters(Set<Character> characters) {
-        this.characters = characters;
-    }
+    public void setCharacters(Set<Character> characters) { this.characters = characters; }
 
     public Franchise getFranchise() {
         return franchise;
