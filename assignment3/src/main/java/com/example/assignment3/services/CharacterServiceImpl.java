@@ -20,12 +20,12 @@ public class CharacterServiceImpl implements CharacterService {
 
     @Override
     public Collection<Character> findAll() {
-        return null;
+        return characterRepository.findAll();
     }
 
     @Override
-    public Character add(Character entity) {
-        return null;
+    public Character add(Character character) {
+        return characterRepository.save(character);
     }
 
     @Override
@@ -34,7 +34,7 @@ public class CharacterServiceImpl implements CharacterService {
     }
 
     @Override
-    public void deleteById(Integer integer) {
-
+    public void deleteById(Integer id) {
+        characterRepository.deleteById(id);
     }
 }
