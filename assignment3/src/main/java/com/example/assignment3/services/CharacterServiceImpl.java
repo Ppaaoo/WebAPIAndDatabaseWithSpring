@@ -8,6 +8,11 @@ import java.util.Collection;
 
 @Service
 public class CharacterServiceImpl implements CharacterService {
+    private final CharacterRepository characterRepository;
+
+    public CharacterServiceImpl(CharacterRepository characterRepository) {
+        this.characterRepository = characterRepository;
+    }
     @Override
     public Character findById(Integer integer) {
         return null;

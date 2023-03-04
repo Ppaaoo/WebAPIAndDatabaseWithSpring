@@ -37,7 +37,8 @@ public abstract class FranchiseMapper {
         }
 
         return source.stream()
-                .map(character -> character.getId()).collect(Collectors.toSet());
+                .map(character -> character.getId())
+                .collect(Collectors.toSet());
     }
 
     @Named("idsToMovies")

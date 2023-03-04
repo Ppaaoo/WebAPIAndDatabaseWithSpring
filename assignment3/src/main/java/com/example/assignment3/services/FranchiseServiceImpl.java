@@ -21,7 +21,7 @@ public class FranchiseServiceImpl implements FranchiseService {
     @Override
     public Franchise findById(Integer integer) {
         return franchiseRepository.findById(integer)
-                .orElseThrow(); //Might need to implement custom error??
+                .orElseThrow();
     }
 
     @Override
