@@ -6,7 +6,6 @@ import com.example.assignment3.models.Movie;
 import com.example.assignment3.models.dto.MovieDto;
 import com.example.assignment3.services.CharacterService;
 import com.example.assignment3.services.FranchiseService;
-import jakarta.persistence.criteria.CriteriaBuilder;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.Named;
