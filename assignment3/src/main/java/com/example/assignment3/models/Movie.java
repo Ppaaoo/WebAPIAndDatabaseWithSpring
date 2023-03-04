@@ -9,8 +9,7 @@ public class Movie {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "movie_id")
     private int id;
-
-    @Column(name = "movie_title", length = 50, nullable = false)
+    @Column(name = "movie_title", length = 50)
     private String title;
     private String genre;
     @Column(name = "release_year")

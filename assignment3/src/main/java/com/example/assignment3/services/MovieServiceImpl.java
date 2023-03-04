@@ -43,6 +43,10 @@ public class MovieServiceImpl implements MovieService {
 
     @Override
     public void deleteById(Integer id) {
+        movieRepository.deleteInMoviesCharactersById(id);
+        Movie movie = movieRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("Movie found with id "+ id));
+        movie.setCharacters(Collections.<Character>emptySet());
+        movieRepository.save(movie);
         movieRepository.deleteById(id);
     }
 
