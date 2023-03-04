@@ -1,9 +1,12 @@
 package com.example.assignment3.services;
 
 import com.example.assignment3.models.Character;
+import com.example.assignment3.repositories.CharacterRepository;
+import org.springframework.stereotype.Service;
 
 import java.util.Collection;
 
+@Service
 public class CharacterServiceImpl implements CharacterService {
     @Override
     public Character findById(Integer integer) {
